@@ -1,6 +1,8 @@
 
 Reference doc: https://spacelift.io/blog/kubernetes-ingress
 
+## Nginx ingress controller setup and Azure DNS setup
+
 #### Step 1 – Setup AKS cluster and connect
 
 create AKS cluster manually on https://portal.azure.com/ 
@@ -63,6 +65,26 @@ Check the Ingress controller pod is running
 
 `kubectl get service ingress-nginx-controller --namespace=ingress-nginx`
 
-Browsing to this IP address will show you the NGINX 404 page. This is because we have not set up any routing rules for our services yet.
+```
+kubectl get service ingress-nginx-controller --namespace=ingress-nginx
+NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                      AGE
+ingress-nginx-controller   LoadBalancer   10.0.###.###   172.###.###.###   80:32240/TCP,443:30240/TCP   156m
+root@practice-9-apr-24-li-vm:~#
+```
+
+Browsing to this EXTERNAL-IP address will show you the NGINX 404 page. This is because we have not set up any routing rules for our services yet.
+
+### Azure DNS setup
+
+Get the DNS from GoDaddy or freenom or any vendor
+
+Go to https://portal.azure.com/ >> DNS zones >> Create DNS zone with DNS name
+
+https://learn.microsoft.com/en-us/azure/dns/dns-getstarted-portal
+https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns
+
+Create a new record set with submit domain name and configure ingress nginx controller EXTERNAL-IP address
+
+Sample Deployments: https://github.com/DevOpsPlatform/DevOps-2024/tree/k8s/ymlfiles/ingress 
 
 
