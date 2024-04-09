@@ -84,6 +84,14 @@ https://learn.microsoft.com/en-us/azure/dns/dns-getstarted-portal
 https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns
 
 Create a new record set with submit domain name and configure ingress nginx controller EXTERNAL-IP address
+ex: create record set >> nexus 
+
+![image](https://github.com/DevOpsPlatform/DevOps-2024/assets/24622526/5de74209-17d8-4eb5-a224-380fa3df71d5)
+
+Or if there are many apps and services will be deployed to AKS cluster, configure `*.dnsname.com`, see below example
+
+![image](https://github.com/DevOpsPlatform/DevOps-2024/assets/24622526/cb81ba38-cfe2-4144-978f-e149c79be416)
+
 
 Sample Deployments: https://github.com/DevOpsPlatform/DevOps-2024/tree/k8s/ymlfiles/ingress 
 
