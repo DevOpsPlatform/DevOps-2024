@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-devopswebapp-ing2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-devopswebapp-ing2
+  template:
+    metadata:
+      labels:
+        app: aks-devopswebapp-ing2
+    spec:
+      containers:
+      - name: aks-devopswebapp-ing2
+        image: venkatasykam/devopswebapp:1.2
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-devopswebapp-ing2
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: aks-devopswebapp-ing2
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aks-devopswebapp-ing2 
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: devops2.devops2024practice.shop
+    http:
+      paths:
+      - pathType: Prefix
+        path: /DevOpsWebApp-1.2
+        backend:
+          service:
+            name: aks-devopswebapp-ing2
+            port:
+              number: 80
+    
+#http://devops2.devops2024practice.shop/DevOpsWebApp-1.2/
