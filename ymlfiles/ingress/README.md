@@ -95,4 +95,4 @@ Or if there are many apps and services will be deployed to AKS cluster, configur
 
 Sample Deployments: https://github.com/DevOpsPlatform/DevOps-2024/tree/k8s/ymlfiles/ingress 
 
-
+**After Practice delete all resources** : `az group delete --resource-group MyResourceGroup`
