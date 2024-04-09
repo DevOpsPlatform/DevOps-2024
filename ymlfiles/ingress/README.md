@@ -83,6 +83,30 @@ Go to https://portal.azure.com/ >> DNS zones >> Create DNS zone with DNS name
 https://learn.microsoft.com/en-us/azure/dns/dns-getstarted-portal
 https://learn.microsoft.com/en-us/azure/dns/dns-delegate-domain-azure-dns
 
+AFter the DNS Zone created, name servers should be configured at DNS settings.
+
+After that, try this command: nslookup -type=SOA dnsname.com
+
+You should get similar output mentioend below - this will take 20 to 30 mins to be available.
+
+```
+OUTPUT:
+nslookup -type=SOA <dnsname.com>
+Server:         127.0.0.53
+Address:        127.0.0.53#53
+
+Non-authoritative answer:
+<dnsname.com>
+        origin = ns1-31.azure-dns.com
+        mail addr = azuredns-hostmaster.microsoft.com
+        serial = 1
+        refresh = 3600
+        retry = 300
+        expire = 2419200
+        minimum = 300
+
+```
+
 Create a new record set with submit domain name and configure ingress nginx controller EXTERNAL-IP address
 ex: create record set >> nexus 
 
