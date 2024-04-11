@@ -1,7 +1,7 @@
 
 **win_ping issues and solutions**:
 
-**Error-1**:
+#### **Error-1**:
 
 ```
 "msg": "Failed to connect to the host via ssh: OpenSSH_8.7p1, OpenSSL 3.0.7 1 Nov 2022\r\ndebug1: Reading configuration data /etc/ssh/ssh_config\r\ndebug3: /etc/ssh/ssh_config line 55:
@@ -37,7 +37,7 @@ ansible_winrm_transport: credssp
 ansible_winrm_server_cert_validation: ignore
 ```
 
-**Error-2**:
+#### **Error-2**:
 ```
 <172.###.###.###> ESTABLISH WINRM CONNECTION FOR USER: practicewi on PORT 5986 TO 172.###.###.###
 172.###.###.### | UNREACHABLE! => {
@@ -63,15 +63,23 @@ configure this image for `AWX EE (latest)` Execution Environment
 ![image](https://github.com/DevOpsPlatform/DevOps-2024/assets/24622526/b349ca7c-75d5-4be9-9c35-3262a4fcbe21)
 
 
-**Error-3**:
+#### **Error-3**:
 
 ```
-<172.190.97.225> ESTABLISH WINRM CONNECTION FOR USER: practicewi on PORT 5986 TO 172.190.97.225
-172.190.97.225 | UNREACHABLE! => {
+<172.###.###.###> ESTABLISH WINRM CONNECTION FOR USER: practicewi on PORT 5986 TO 172.###.###.###
+172.###.###.### | UNREACHABLE! => {
     "changed": false,
-    "msg": "credssp: HTTPSConnectionPool(host='172.190.97.225', port=5986): Max retries exceeded with url: /wsman (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7fe7903d8a60>, 'Connection to 172.190.97.225 timed out. (connect timeout=30)'))",
+    "msg": "credssp: HTTPSConnectionPool(host='172.###.###.###', port=5986): Max retries exceeded with url: /wsman (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7fe7903d8a60>, 'Connection to 172.###.###.### timed out. (connect timeout=30)'))",
     "unreachable": true
 }
 ```
+
+**Solutions**:
+
+**Step-1**: Open 5986 port at server side at inbound rules.
+and 
+**Step-2**: Connect to the windows server and run [ConfigureRemotingForAnsible.ps1](https://github.com/DevOpsPlatform/DevOps-2024/blob/awx/winrm/ConfigureRemotingForAnsible.ps1) this ps1 file in admin mode in powershell commond line.
+
+
 
 
