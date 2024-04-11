@@ -135,3 +135,28 @@ Finally, `win_ping` success
     "ping": "pong"
 }
 ```
+
+**Other errors due to wrong creds**:
+
+#### **Error-5**:
+
+```
+172.###.###.### | UNREACHABLE! => {
+    "changed": false,
+    "msg": "credssp: Received error status from the server: (3221225581) STATUS_LOGON_FAILURE 0xc000006d",
+    "unreachable": true
+}
+```
+
+**Solution**: Credentials are wrong
+
+#### **Error-6**:
+```
+52.188.82.112 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "credssp: auth method credssp requires a password",
+    "unreachable": true
+}
+```
+
+**Solution**: either empty user name or empty password, update awx creds with correct user name password
