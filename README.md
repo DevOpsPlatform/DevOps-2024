@@ -56,7 +56,7 @@ kubectl get pods -l "app.kubernetes.io/managed-by=awx-operator"
 
 kubectl get svc -l "app.kubernetes.io/managed-by=awx-operator"
 
-kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" | base64 --decode ; echos
+kubectl get secret awx-demo-admin-password -o jsonpath="{.data.password}" | base64 --decode ;
 ```
 
 After practice, delete all resources `az group delete --resource-group MyResourceGroup`
