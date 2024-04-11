@@ -1,5 +1,5 @@
 
-**win ping issues and solutions**:
+**win_ping issues and solutions**:
 
 **Error-1**:
 
@@ -36,3 +36,31 @@ ansible_connection: winrm
 ansible_winrm_transport: credssp
 ansible_winrm_server_cert_validation: ignore
 ```
+
+**Error-2**:
+```
+<172.###.###.###> ESTABLISH WINRM CONNECTION FOR USER: practicewi on PORT 5986 TO 172.###.###.###
+172.###.###.### | UNREACHABLE! => {
+    "changed": false,
+    "msg": "credssp: requests auth method is credssp, but requests-credssp is not installed",
+    "unreachable": true
+}
+```
+
+**Solution**: Build custom image and push to repo - https://github.com/DevOpsPlatform/DevOps-2024/blob/awx/custome-ee/Dockerfile
+
+```
+docker build -t customee:1.0 -f Dockerfile .
+docker tag customee:1.0 venkatasykam/awx-customee:1.0
+docker push venkatasykam/awx-customee:1.0
+```
+
+configure this image for `AWX EE (latest)` Execution Environment
+
+![image](https://github.com/DevOpsPlatform/DevOps-2024/assets/24622526/f8a46107-216d-4663-8ec8-83497fc73494)
+
+
+![image](https://github.com/DevOpsPlatform/DevOps-2024/assets/24622526/b349ca7c-75d5-4be9-9c35-3262a4fcbe21)
+
+
+
