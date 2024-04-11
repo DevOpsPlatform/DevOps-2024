@@ -63,4 +63,15 @@ configure this image for `AWX EE (latest)` Execution Environment
 ![image](https://github.com/DevOpsPlatform/DevOps-2024/assets/24622526/b349ca7c-75d5-4be9-9c35-3262a4fcbe21)
 
 
+**Error-3**:
+
+```
+<172.190.97.225> ESTABLISH WINRM CONNECTION FOR USER: practicewi on PORT 5986 TO 172.190.97.225
+172.190.97.225 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "credssp: HTTPSConnectionPool(host='172.190.97.225', port=5986): Max retries exceeded with url: /wsman (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7fe7903d8a60>, 'Connection to 172.190.97.225 timed out. (connect timeout=30)'))",
+    "unreachable": true
+}
+```
+
 
