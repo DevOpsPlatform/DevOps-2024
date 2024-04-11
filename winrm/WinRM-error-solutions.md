@@ -80,6 +80,58 @@ configure this image for `AWX EE (latest)` Execution Environment
 and 
 **Step-2**: Connect to the windows server and run [ConfigureRemotingForAnsible.ps1](https://github.com/DevOpsPlatform/DevOps-2024/blob/awx/winrm/ConfigureRemotingForAnsible.ps1) this ps1 file in admin mode in powershell commond line.
 
+Run this command `winrm enumerate winrm/config/Listener`
 
+```
+winrm enumerate winrm/config/Listener
 
+Listener
+    Address = *
+    Transport = HTTP
+    Port = 5985
+    Hostname
+    Enabled = true
+    URLPrefix = wsman
+    CertificateThumbprint
+    ListeningOn = 10.0.0.5, 127.0.0.1, ::1, 2001:0:34f1:8072:1c43:f83:f5ff:fffa, fe80::5efe:10.0.0.5%2, fe80::1c43:f83:f
+5ff:fffa%5, fe80::94fc:31aa:bc37:8d40%3
 
+Listener
+    Address = *
+    Transport = HTTPS
+    Port = 5986
+    Hostname = practice-11-apr
+    Enabled = true
+    URLPrefix = wsman
+    CertificateThumbprint = A0F40B392E88A9D454688B61C82FB1F6AEA134AC
+    ListeningOn = 10.0.0.5, 127.0.0.1, ::1, 2001:0:34f1:8072:1c43:f83:f5ff:fffa, fe80::5efe:10.0.0.5%2, fe80::1c43:f83:f
+5ff:fffa%5, fe80::94fc:31aa:bc37:8d40%3
+```
+
+#### **Error-4**:
+
+```
+"msg": "credssp: The server did not response CredSSP being an available authentication method - actual: 'Negotiate, Basic realm=\"WSMAN\"'",
+```
+
+**Solution**:
+
+```
+winrm set winrm/config/service/auth '@{CredSSP="true"}'
+
+winrm set winrm/config/client/auth '@{CredSSP="true"}'
+```
+
+Finally, `win_ping` success
+
+```
+172.###.###.### | SUCCESS => {
+    "changed": false,
+    "invocation": {
+        "module_args": {
+            "data": "pong"
+        }
+    },
+    "ping": "pong"
+}
+```
