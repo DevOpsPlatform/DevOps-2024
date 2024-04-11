@@ -4,6 +4,8 @@
 
 **Requirements**: AKS cluster with size of each node is - 4cpu and 8gb RAM
 
+**Install az cli and kubectl**: https://github.com/DevOpsPlatform/DevOps-2024/blob/k8s/1.Basics.md 
+
 ```
 # cat awx.yml
 # 4 cpu and 8 GB RAM nodepool
